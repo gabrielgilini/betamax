@@ -1,0 +1,55 @@
+.betamax-wrapper
+{
+    position: relative;
+    float: left;
+}
+
+.betamax-playpause
+{
+    position: absolute;
+    bottom: 2px;
+    left: 5px;
+    z-index: 10;
+    text-indent: -99999px;
+    border: none;
+    background: url(../img/play.png) center no-repeat;
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.playing .betamax-playpause
+{
+    background: url(../img/pause.png) center no-repeat;
+}
+
+.betamax-seekbar
+{
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    background: black;
+    bottom: -6px;
+    left: 0;
+}
+
+.betamax-progressbar
+{
+    width: 0%;
+    height: 100%;
+    background: red;
+}
+
+.betamax-progresstime
+{
+    position: absolute;
+    bottom: -7px;
+    right: 0;
+    color: white;
+    font-family: sans-serif;
+    font-size: 70%;
+    background: rgba(0, 0, 0, .7);
+    width: 100%;
+    text-align: right;
+    line-height: 160%;
+}

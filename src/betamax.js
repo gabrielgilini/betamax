@@ -29,7 +29,7 @@ var Betamax;
         var elCn = el.className;
         if(!(new RegExp('(^|\\s)' + cn + '(\\s|$)')).test(elCn))
         {
-            el.className += (!elCn ? ' ' : '') + cn
+            el.className += (elCn ? ' ' : '') + cn
             return true;
         }
         return false;
@@ -91,9 +91,22 @@ var Betamax;
 
     var normalizeTime = function(secs)
     {
-        return Math.floor(secs / 60) + ':' + Math.floor(secs % 60);
+        var m = Math.floor(secs / 60),
+            s = Math.floor(secs % 60);
+        
+        if(m < 10)
+        {
+            m = '0' + m;
+        }
+        
+        if(s < 10)
+        {
+            s = '0' + s;
+        }
+        
+        return m + ':' + s;
     };
-
+    
     Betamax = function(videoEl)
     {
         if(typeof videoEl == 'string')
@@ -148,7 +161,7 @@ var Betamax;
             'play',
             function()
             {
-                addClass(videoEl, 'playing');
+                addClass(videoWrapper, 'playing');
                 emptyNode(playPause);
                 playPause.appendChild(document.createTextNode('Pause'));
             }
@@ -159,7 +172,7 @@ var Betamax;
             'pause',
             function()
             {
-                removeClass(videoEl, 'playing');
+                removeClass(videoWrapper, 'playing');
                 emptyNode(playPause);
                 playPause.appendChild(document.createTextNode('Play'));
             }
@@ -174,6 +187,7 @@ var Betamax;
         seekBar.appendChild(progressBar);
 
         var progressTime = document.createElement('p');
+        progressTime.className = 'betamax-progresstime';
         var vidDuration;
         if(videoEl.readyState < videoEl.HAVE_METADATA)
         {
@@ -206,6 +220,8 @@ var Betamax;
                     normalizeTime(vidDuration)
                 )
             );
+            
+            progressBar.style.width = ((videoEl.currentTime / vidDuration) * 100) + '%';
         };
 
         videoWrapper.appendChild(progressTime);
@@ -215,6 +231,22 @@ var Betamax;
             'timeupdate',
             updateTime
         );
+        
+        attachListener(
+            videoEl,
+            'click',
+            function()
+            {
+                if(this.paused)
+                {
+                    this.play();
+                }
+                else
+                {
+                    this.pause();
+                }
+            }
+        )
     };
 
     var bProto = Betamax.prototype;
