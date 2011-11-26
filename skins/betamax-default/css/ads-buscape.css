@@ -1,0 +1,41 @@
+.betamax-buscape
+{
+    height: 40px;
+    background: #000;
+    opacity: .8;
+    position: absolute;
+    width: 100%;
+    bottom: -46px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.betamax-buscape li
+{
+    list-style: none;
+    padding: 7px 10px;
+    height: 24px;
+}
+
+.betamax-buscape li a
+{
+    line-height: 24px;
+    display: block;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: #ffcb05;
+}
+
+.betamax-buscape li a img
+{
+    padding: 2px;
+    margin-right: 10px;
+    background-color: #ffcb05;
+}
+
+.betamax-buscape li a span
+{
+    position: relative;
+    top: -6px;
+}

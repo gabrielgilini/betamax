@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Betamax — HTML video player with subtitles support</title>
+    <title>Betamax &mdash; HTML video player with subtitles support</title>
     <script type="text/javascript" src="../src/betamax.js"></script>
     <link rel="stylesheet" href="../skins/betamax-default/css/controls.css" />
+    <link rel="stylesheet" href="../skins/betamax-default/css/ads-buscape.css" />
 </head>
 <body>
-    <video src="videos/The Dark Knight Rises.theora.ogv" controls></video>
+    <video id="video1" src="videos/The Dark Knight Rises.theora.ogv" controls></video>
     <script type="text/javascript">
         (function()
         {
-            var beta = new Betamax(document.getElementsByTagName('video')[0]);
+            var beta = new Betamax(
+                document.getElementById('video1'),
+                {
+                    buscape: {
+                        id: '68336a376b456c784b37413d',
+                        animationDuration: 500,
+                        animationInterval: 5000
+                    }
+                }
+            );
         })();
     </script>
 </body>

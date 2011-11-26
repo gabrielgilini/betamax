@@ -1,0 +1,15 @@
+Betamax HTML5 Video Player
+
+Usage:
+
+    | var vidEl = document.getElementById('video1');
+    | var b1 = new Betamax(vidEl);
+
+    or
+
+    | var b1 = new Betamax('video1');
+
+The player is on a very early stage, so I won't even bother testing in any other
+browser (I use Google Chrome). Do not use it in production code yet!
+
+If you like to show Buscape ads around your videos, check our demo.
